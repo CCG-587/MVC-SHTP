@@ -6,6 +6,7 @@ import domain.Wares;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class WaresDaoImpl implements WaresDao {
@@ -24,11 +25,14 @@ public class WaresDaoImpl implements WaresDao {
             while (rs.next()){
                 String waresid = rs.getString(1);
                 String userid = rs.getString(2);
-                String waresname = rs.getString(3);
-                double waresprice = rs.getDouble(4);
-                Integer waresstock = rs.getInt(5);
-                String waresmarks = rs.getString(6);
-                Wares wares = new Wares(waresid,userid,waresname,waresprice,waresstock,waresmarks);
+                String name = rs.getString(3);
+                double originalprice = rs.getDouble(4);
+                double currentprice = rs.getDouble(5);
+                Integer stock = Integer.valueOf(rs.getString(6));
+                String state = rs.getString(7);
+                Timestamp date = rs.getTimestamp(8);
+                String type = rs.getString(9);
+                Wares wares = new Wares(waresid,userid,name,originalprice,currentprice,stock,state,type,date);
                 waresList.add(wares);
             }
             return waresList;

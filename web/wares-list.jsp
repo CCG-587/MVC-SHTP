@@ -57,7 +57,18 @@
     <div class="x-body">
       <div class="layui-row">
         <form action="/shtp/WaresQueryServlet" class="layui-form layui-col-md12 x-so">
+          <input type="text" id="waresname" name="waresname"  placeholder="请输入商品名称" autocomplete="off" class="layui-input">
+          <input type="text" id="userid" name="userid"  placeholder="请输入用户编号" autocomplete="off" class="layui-input">
+          <input type="text" id="waresid" name="waresid"  placeholder="请输入商品编号" autocomplete="off" class="layui-input">
           <input class="layui-input" placeholder="开始上架时间" id="start" name="start">
+          <div class="layui-input-inline">
+            <select id="type" name="type">
+              <option>商品类型</option>
+              <option>导弹</option>
+              <option>机甲</option>
+              <option>类型三</option>
+            </select>
+          </div>
           <div id="waresstate" class="layui-input-inline">
             <select id="state" name="state">
               <option>商品状态</option>
@@ -65,17 +76,7 @@
               <option>下架</option>
             </select>
           </div>
-          <div class="layui-input-inline">
-            <select id="type" name="type">
-              <option>商品类型</option>
-              <option>类型一</option>
-              <option>类型二</option>
-              <option>类型三</option>
-            </select>
-          </div>
 
-          <input type="text" id="userid" name="userid"  placeholder="请输入用户编号" autocomplete="off" class="layui-input">
-          <input type="text" id="waresid" name="waresid"  placeholder="请输入商品编号" autocomplete="off" class="layui-input">
 <%--          <button id="query" class="layui-btn"  lay-submit="/querywares" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>--%>
           <input class="layui-btn" lay-filter="sreach" type="submit" value="查询">
         </form>
@@ -94,7 +95,8 @@
             <th>商品编号</th>
             <th>商品名称</th>
             <th>发布人编号</th>
-            <th>价格</th>
+            <th>原价</th>
+            <th>原价</th>
             <th>库存</th>
             <th>类型</th>
             <th>上架时间</th>
@@ -108,23 +110,24 @@
               <td>
                 <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
               </td>
-              <td>${wares.waresid}</td>
-              <td>${wares.waresname}</td>
+              <td>${wares.id}</td>
+              <td>${wares.name}</td>
               <td>${wares.userid}</td>
-              <td>${wares.waresprice}</td>
-              <td>${wares.waresstock}</td>
-              <td>${wares.waresremarks}</td>
-              <td>&nbsp;&nbsp;</td>
-              <td>&nbsp;&nbsp;</td>
+              <td>${wares.originalprice}</td>
+              <td>${wares.currentprice}</td>
+              <td>${wares.stock}</td>
+              <td>${wares.type}</td>
+              <td>${wares.date}</td>
+              <td>${wares.state}</td>
               <td class="td-manage">
                 <a title="查看"  onclick="x_admin_show('编辑','order-view.jsp')" href="javascript:;">
-                  <i class="layui-icon">&#xe63c;</i>d
+                  <i class="layui-icon">&#xe631;</i>
                 </a>
                 <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
                   <i class="layui-icon">&#xe640;</i>
                 </a>
                 <a title="详细信息" onclick="member_del(this,'要删除的id')" href="javascript:;">
-                  <i class="layui-icon">&#xe641;</i>
+                  <i class="layui-icon">&#xe63c;</i>
                 </a>
               </td>
             </tr>

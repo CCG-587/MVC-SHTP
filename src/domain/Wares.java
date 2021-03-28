@@ -1,39 +1,65 @@
 package domain;
 
+import java.util.Date;
+
 /**
  * 商品实体类
  */
 public class Wares {
-    private String waresid;
+    private String id;//编号
 
-    private String userid;
+    private String userid;//用户编号
 
-    private String waresname;
+    private String name;//商品名称
 
-    private Double waresprice;
+    private Double originalprice;//原价
 
-    private Integer waresstock;
+    private Double currentprice;//现价
 
-    private String waresremarks;
+    private Integer stock;//库存
+
+    private String state;//状态
+
+    private String type;//类别
+
+    private Date date;//上架时间
+
+    @Override
+    public String toString() {
+        return "Wares{" +
+                "id='" + id + '\'' +
+                ", userid='" + userid + '\'' +
+                ", name='" + name + '\'' +
+                ", originalprice=" + originalprice +
+                ", currentprice=" + currentprice +
+                ", stock=" + stock +
+                ", state='" + state + '\'' +
+                ", type='" + type + '\'' +
+                ", date=" + date +
+                '}';
+    }
 
     public Wares() {
     }
 
-    public Wares(String waresid, String userid, String waresname, Double waresprice, Integer waresstock, String waresremarks) {
-        this.waresid = waresid;
+    public Wares(String id, String userid, String name, Double originalprice, Double currentprice, Integer stock, String state, String type, Date date) {
+        this.id = id;
         this.userid = userid;
-        this.waresname = waresname;
-        this.waresprice = waresprice;
-        this.waresstock = waresstock;
-        this.waresremarks = waresremarks;
+        this.name = name;
+        this.originalprice = originalprice;
+        this.currentprice = currentprice;
+        this.stock = stock;
+        this.state = state;
+        this.type = type;
+        this.date = date;
     }
 
-    public String getWaresid() {
-        return waresid;
+    public String getId() {
+        return id;
     }
 
-    public void setWaresid(String waresid) {
-        this.waresid = waresid;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getUserid() {
@@ -44,47 +70,59 @@ public class Wares {
         this.userid = userid;
     }
 
-    public String getWaresname() {
-        return waresname;
+    public String getName() {
+        return name;
     }
 
-    public void setWaresname(String waresname) {
-        this.waresname = waresname;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Double getWaresprice() {
-        return waresprice;
+    public Double getOriginalprice() {
+        return originalprice;
     }
 
-    public void setWaresprice(Double waresprice) {
-        this.waresprice = waresprice;
+    public void setOriginalprice(Double originalprice) {
+        this.originalprice = originalprice;
     }
 
-    public Integer getWaresstock() {
-        return waresstock;
+    public Double getCurrentprice() {
+        return currentprice;
     }
 
-    public void setWaresstock(Integer waresstock) {
-        this.waresstock = waresstock;
+    public void setCurrentprice(Double currentprice) {
+        this.currentprice = currentprice;
     }
 
-    public String getWaresremarks() {
-        return waresremarks;
+    public Integer getStock() {
+        return stock;
     }
 
-    public void setWaresremarks(String waresremarks) {
-        this.waresremarks = waresremarks;
+    public void setStock(Integer stock) {
+        this.stock = stock;
     }
 
-    @Override
-    public String toString() {
-        return "Wares{" +
-                "waresid='" + waresid + '\'' +
-                ", userid='" + userid + '\'' +
-                ", waresname='" + waresname + '\'' +
-                ", waresprice=" + waresprice +
-                ", waresstock=" + waresstock +
-                ", waresremarks='" + waresremarks + '\'' +
-                '}';
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

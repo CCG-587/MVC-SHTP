@@ -15,32 +15,13 @@
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="static/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="static/js/xadmin.js"></script>
+    <script type="text/javascript" src="static/js/wares.js"></script>
 
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
     <!--[if lt IE 9]>
       <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
       <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script type="text/javascript">
-        $(function(){
-            $('#query').click(function (){
-                let startdate = $('#start').val();
-                alert(startdate);
-                $.ajax({
-                    contentType:"application/json;charset=utf-8",
-                    type:"get",
-                    url:"/querywares",
-                    dataType:jsonString,
-                    success:function (){
-                        alert("success!");
-                    },
-                    error:function(e){
-                        alert("error!!!");
-                    }
-                });
-            })
-        })
-    </script>
   </head>
   
   <body>
@@ -57,28 +38,33 @@
     <div class="x-body">
       <div class="layui-row">
         <form action="/shtp/WaresQueryServlet" class="layui-form layui-col-md12 x-so">
+          <input type="text" id="waresid" name="waresid"  placeholder="请输入商品编号" autocomplete="off" class="layui-input">
           <input type="text" id="waresname" name="waresname"  placeholder="请输入商品名称" autocomplete="off" class="layui-input">
           <input type="text" id="userid" name="userid"  placeholder="请输入用户编号" autocomplete="off" class="layui-input">
-          <input type="text" id="waresid" name="waresid"  placeholder="请输入商品编号" autocomplete="off" class="layui-input">
           <input class="layui-input" placeholder="开始上架时间" id="start" name="start">
           <div class="layui-input-inline">
-            <select id="type" name="type">
-              <option>商品类型</option>
-              <option>导弹</option>
-              <option>机甲</option>
-              <option>类型三</option>
+            <select id="type" name="type" placeholder="请输入商品编号">
+              <option value="0">--商品类型--</option>
+              <option value="1">导弹</option>
+              <option value="2">机甲</option>
+              <option value="3">衣服</option>
+              <option value="3">化妆品</option>
+              <option value="3">玩具</option>
+              <option value="3">文具</option>
+              <option value="3">陶瓷</option>
+              <option value="3"></option>
             </select>
           </div>
           <div id="waresstate" class="layui-input-inline">
             <select id="state" name="state">
-              <option>商品状态</option>
-              <option>正常</option>
-              <option>下架</option>
+              <option value="0">--商品状态--</option>
+              <option value="1">正常</option>
+              <option value="2">下架</option>
             </select>
           </div>
 
-<%--          <button id="query" class="layui-btn"  lay-submit="/querywares" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>--%>
-          <input class="layui-btn" lay-filter="sreach" type="submit" value="查询">
+          <button id="query" class="layui-btn" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+<%--          <input class="layui-btn" lay-filter="sreach" type="submit" value="查询">--%>
         </form>
       </div>
       <xblock>
@@ -120,13 +106,13 @@
               <td>${wares.date}</td>
               <td>${wares.state}</td>
               <td class="td-manage">
-                <a title="查看"  onclick="x_admin_show('编辑','order-view.jsp')" href="javascript:;">
+                <a title="编辑"  onclick="x_admin_show('编辑','order-view.jsp')" href="javascript:;">
                   <i class="layui-icon">&#xe631;</i>
                 </a>
-                <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
+                <a title="删除" onclick="member_del(this,'')" href="javascript:;">
                   <i class="layui-icon">&#xe640;</i>
                 </a>
-                <a title="详细信息" onclick="member_del(this,'要删除的id')" href="javascript:;">
+                <a title="详细信息" onclick="member_del(this,'')" href="">
                   <i class="layui-icon">&#xe63c;</i>
                 </a>
               </td>

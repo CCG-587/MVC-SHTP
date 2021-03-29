@@ -22,8 +22,12 @@ public class WaresServiceImpl implements WaresService {
 
     @Override
     public List<Wares> queryByCondition(Wares wares) throws Exception {
-        waresDao.selectByCondition(wares);
-        return null;
+        return waresDao.selectByCondition(wares);
+    }
+
+    @Override
+    public Integer removeById(String waresid) throws Exception {
+        return waresDao.deleteByPrimaryKey(waresid);
     }
 
 }

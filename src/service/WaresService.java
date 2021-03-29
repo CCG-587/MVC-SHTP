@@ -12,5 +12,7 @@ public interface WaresService {
     /*根据条件查询商品详细*/
     List<Wares> queryByCondition(Wares wares) throws Exception;
 
+    Integer removeById(String waresid) throws Exception;
+
 
 }

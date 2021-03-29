@@ -13,7 +13,8 @@ public class WaresDaoImpl implements WaresDao {
     Connection conn = null;
     PreparedStatement pstm = null;
     ResultSet rs = null;
-
+    int result = 0;
+    /*查询所有商品*/
     @Override
     public List<Wares> selectAll() {
         List<Wares> waresList = new ArrayList<>();
@@ -42,11 +43,22 @@ public class WaresDaoImpl implements WaresDao {
         return null;
     }
 
+    /*通过主键删除商品信息*/
     @Override
     public int deleteByPrimaryKey(String waresid) {
-        return 0;
+        try {
+            conn = DButil.getConnction();
+            String sql = "delete from shtp where waresid ="+waresid;
+            System.out.println(sql);
+            pstm = conn.prepareStatement(sql);
+            result = pstm.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return result;
     }
 
+    /*插入商品*/
     @Override
     public int insert(Wares record) {
         return 0;
@@ -57,11 +69,13 @@ public class WaresDaoImpl implements WaresDao {
         return 0;
     }
 
+    /*通过主键查询*/
     @Override
     public Wares selectByPrimaryKey(String waresid) {
         return null;
     }
 
+    /*修改商品信息*/
     @Override
     public int updateByPrimaryKeySelective(Wares record) {
         return 0;
